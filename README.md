@@ -19,7 +19,7 @@ new System()
     })
     .add('logger', console)
     .add('mongodb', mongodb()).dependsOn('config', 'logger')
-    .start(function(err, components) {
+    .start((err, components) => {
         // Do stuff with components.mongodb
     })
 ```
