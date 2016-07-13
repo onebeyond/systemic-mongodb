@@ -1,5 +1,6 @@
 var async = require('async')
 var has = require('lodash.has')
+var format = require('util').format
 
 module.exports = function(options) {
 
@@ -20,7 +21,7 @@ module.exports = function(options) {
     }
 
     function start(cb) {
-        logger.info(`Connecting to ${config.url}`, { mongo: config.options || {} })
+        logger.info(format('Connecting to %s', config.url))
         MongoClient.connect(config.url, config.options || {}, function(err, _db) {
             if (err) return cb(err)
             db = _db
