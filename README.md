@@ -1,10 +1,9 @@
 # systemic-mongodb
 A [systemic](https://github.com/guidesmiths/systemic) mongodb component
 
-## TL;DR
+## Usage
 ```js
 const System = require('systemic')
-const confabulous = require('./components/confabulous')
 const mongodb = require('systemic-mongodb')
 
 new System()
