@@ -1,10 +1,11 @@
 var async = require('async')
+var get = require('lodash.get')
 var has = require('lodash.has')
 var format = require('util').format
 
 module.exports = function(options) {
 
-    var MongoClient = options && options.MongoClient || require('mongodb')
+    var MongoClient = get(options, 'MongoClient') || require('mongodb')
     var db
     var config
     var logger
