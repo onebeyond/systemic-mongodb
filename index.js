@@ -31,6 +31,7 @@ module.exports = function(options) {
 
     function stop(cb) {
         if (!db) return cb()
+        logger.info(format('Disconnecting from %s', config.url))
         db.close(cb)
     }
 
