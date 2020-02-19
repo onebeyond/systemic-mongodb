@@ -16,7 +16,7 @@
     "async": "^2.0.0",
     "lodash.get": "^4.3.0",
     "lodash.has": "^4.4.0",
-    "mongodb": "^2.2.1"
+    "mongodb": "^3.5.2"
   },
   "devDependencies": {},
   "repository": {
