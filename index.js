@@ -1,43 +1,46 @@
-var async = require('async')
-var get = require('lodash.get')
-var has = require('lodash.has')
-var format = require('util').format
+const { get, has } = require('lodash');
+const { MongoClient } = require('mongodb');
 
-module.exports = function(options) {
+module.exports = (options) => {
+  const MongoClientInstance = get(options, 'MongoClient') || MongoClient;
+  let client;
+  let config;
+  let logger;
 
-    var MongoClient = get(options, 'MongoClient') || require('mongodb')
-    var db
-    var config
-    var logger
+  const start = async (dependencies) => {
+    config = { ...dependencies.config };
+    logger = ({ ...dependencies.logger }) || console;
 
-    function init(dependencies, cb) {
-        config = dependencies.config
-        logger = dependencies.logger || console
-        cb()
+    if (!dependencies.logger) {
+      logger.info = console.log;
     }
 
-    function validate(cb) {
-        if (!has(config, 'url')) return cb(new Error('config.url is required'))
-        cb()
+    if (!has(config, 'url')) {
+      throw new Error('config.url is required');
     }
 
-    function start(cb) {
-        logger.info(format('Connecting to %s', config.url))
-        MongoClient.connect(config.url, config.options || {}, function(err, _db) {
-            if (err) return cb(err)
-            db = _db
-            cb(null, db)
-        })
+    logger.info(`Connecting to ${config.url}`);
+    try {
+      client = await MongoClientInstance.connect(config.url, config.options || {});
+
+      return client;
+    } catch (error) {
+      throw new Error(error);
+    }
+  };
+
+  const stop = async () => {
+    if (!client) {
+      logger.info('No database has been opened.');
+      return;
     }
 
-    function stop(cb) {
-        if (!db) return cb()
-        logger.info(format('Disconnecting from %s', config.url))
-        db.close(cb)
-    }
+    logger.info(`Disconnecting from ${config.url}`);
+    await client.close();
+  };
 
-    return {
-        start: async.seq(init, validate, start),
-        stop: stop
-    }
-}
+  return {
+    start,
+    stop,
+  };
+};
