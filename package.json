@@ -13,7 +13,6 @@
   "author": "GuideSmiths Ltd",
   "license": "ISC",
   "dependencies": {
-    "lodash": "^4.17.15",
     "mongodb": "^3.5.7"
   },
   "devDependencies": {

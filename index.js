@@ -1,8 +1,7 @@
-const { get, has } = require('lodash');
 const { MongoClient } = require('mongodb');
 
 module.exports = (options) => {
-  const MongoClientInstance = get(options, 'MongoClient') || MongoClient;
+  const MongoClientInstance = options && options.MongoClient ? options.MongoClient : MongoClient;
   let client;
   let config;
   let logger;
@@ -15,8 +14,12 @@ module.exports = (options) => {
       logger.info = console.log;
     }
 
-    if (!has(config, 'url')) {
+    if (!config || !config.url) {
       throw new Error('config.url is required');
+    }
+
+    if (!config.options) {
+      config.options = {};
     }
 
     logger.info(`Connecting to ${config.url}`);
