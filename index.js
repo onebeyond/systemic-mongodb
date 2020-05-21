@@ -22,9 +22,11 @@ module.exports = (options) => {
       config.options = {};
     }
 
+    const options = { ...config.options };
+
     logger.info(`Connecting to ${config.url}`);
     try {
-      client = await MongoClientInstance.connect(config.url, config.options || {});
+      client = await MongoClientInstance.connect(config.url, options );
 
       return client;
     } catch (error) {
