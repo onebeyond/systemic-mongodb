@@ -14,7 +14,8 @@ new System()
                 server: {
                     poolSize: 5
                 }
-            }
+            },
+            showConnectionString: false 
         }
     })
     .add('logger', console)
@@ -23,3 +24,8 @@ new System()
         // Do stuff with components.mongodb
     })
 ```
+
+### Parameters
+- **url** Use *mongodb://* [connection string](https://docs.mongodb.com/manual/reference/connection-string/)
+- **showConnectionString** Show connection string on logs, **false** by default
+- **options** Options passed to [MongoClient](https://mongodb.github.io/node-mongodb-native/api-generated/mongoclient.html)
