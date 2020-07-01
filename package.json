@@ -1,9 +1,11 @@
 {
   "name": "systemic-mongodb",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "A systemic mongodb component",
   "main": "index.js",
   "scripts": {
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect",
     "test": "echo \"Error: no test specified\" && exit 0"
   },
   "keywords": [
@@ -13,6 +15,7 @@
   "author": "GuideSmiths Ltd",
   "license": "ISC",
   "dependencies": {
+    "snyk": "^1.316.1",
     "mongodb": "^3.5.7"
   },
   "devDependencies": {
@@ -27,5 +30,6 @@
   "bugs": {
     "url": "https://github.com/guidesmiths/systemic-mongodb/issues"
   },
-  "homepage": "https://github.com/guidesmiths/systemic-mongodb#readme"
+  "homepage": "https://github.com/guidesmiths/systemic-mongodb#readme",
+  "snyk": true
 }
