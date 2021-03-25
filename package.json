@@ -16,7 +16,7 @@
   "author": "GuideSmiths Ltd",
   "license": "ISC",
   "dependencies": {
-    "snyk": "^1.316.1",
+    "snyk": "^1.465.0",
     "mongodb": "^3.5.7"
   },
   "devDependencies": {
