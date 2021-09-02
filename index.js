@@ -45,9 +45,9 @@ module.exports = (options) => {
       return;
     }
 
-    if( config.showConnectionString ){
+    if(config.showConnectionString){
       logger.info(`Disconnecting from ${config.url}`);
-    }else{
+    } else {
       logger.info(`Disconnecting from server <hidden connection url>`);
     }
     await client.close();
