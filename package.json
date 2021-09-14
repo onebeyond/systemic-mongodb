@@ -1,6 +1,6 @@
 {
   "name": "systemic-mongodb",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "A systemic mongodb component",
   "main": "index.js",
   "scripts": {
