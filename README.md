@@ -1,3 +1,6 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/88bb5737814cba7db3e5/maintainability)](https://codeclimate.com/github/onebeyond/systemic-mongodb/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/88bb5737814cba7db3e5/test_coverage)](https://codeclimate.com/github/onebeyond/systemic-mongodb/test_coverage)
+
 # systemic-mongodb
 A [systemic](https://github.com/guidesmiths/systemic) mongodb component
 
