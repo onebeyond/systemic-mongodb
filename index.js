@@ -24,14 +24,14 @@ module.exports = (options) => {
 
     const mongoOptions = { ...config.options };
 
-    if( config.showConnectionString ){
+    if (config.showConnectionString) {
       logger.info(`Connecting to ${config.url}`);
-    }else{
-      logger.info(`Connecting to server <hidden connection url>`);
+    } else {
+      logger.info('Connecting to server <hidden connection url>');
     }
 
     try {
-      client = await MongoClientInstance.connect(config.url, mongoOptions );
+      client = await MongoClientInstance.connect(config.url, mongoOptions);
 
       return client;
     } catch (error) {
@@ -48,7 +48,7 @@ module.exports = (options) => {
     if (config.showConnectionString) {
       logger.info(`Disconnecting from ${config.url}`);
     } else {
-      logger.info(`Disconnecting from server <hidden connection url>`);
+      logger.info('Disconnecting from server <hidden connection url>');
     }
     await client.close();
   };
